@@ -115,7 +115,7 @@ class TestPetShop < Minitest::Test
   #   pets = pets_by_breed(@pet_shop, "British Shorthair")
   #   assert_equal(2, pets.count)
   # end
-
+  #
   # def test_all_pets_by_breed__not_found
   #   pets = pets_by_breed(@pet_shop, "Dalmation")
   #   assert_equal(0, pets.count)
@@ -144,7 +144,7 @@ class TestPetShop < Minitest::Test
   # end
 
   # def test_customer_cash
-  #   cash = customer_cash(@customer[0])
+  #   cash = customer_cash(@customers[0])
   #   assert_equal(1000, cash)
   # end
 

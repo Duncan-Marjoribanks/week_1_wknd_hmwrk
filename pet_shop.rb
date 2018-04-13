@@ -27,10 +27,15 @@
 #   return shop[:pets].length
 # end
 #
-def pets_by_breed(shop, breed)
-total_breed_count = []
-for breed in shop[:pets][:breed]
-  total_breed_count += 1
-end
-return total_breed_count
-end
+
+# ##########not my work
+# def pets_by_breed(shop, breed)
+# i = 0
+#   total = []
+#   for pet in shop[:pets]
+#     total.push(pet) if shop[:pets][i][:breed] == breed
+#     i +=1
+#   end
+#   return total
+# end
+# #########not my work
