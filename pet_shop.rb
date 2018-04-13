@@ -39,20 +39,26 @@
 #   return total
 # end
 # #########not my work
+# def find_pet_by_name(shop, name)
+#   i = 0
+#   pet = Hash.new
+#   for item in shop[:pets]
+#          pet = shop[:pets][i] if shop[:pets][i][:name] == name
+#     i += 1
+#   end
+#   return pet
+# end
+
 def find_pet_by_name(shop, name)
   i = 0
   pet = Hash.new
   for item in shop[:pets]
-         pet = shop[:pets][i] if shop[:pets][i][:name] == name
+    pet = shop[:pets][i] if shop[:pets][i][:name] == name
     i += 1
   end
-  return pet
+  if pet.empty?
+    return nil
+  else
+    return pet
+  end
 end
-
-# pets[
-# name: "Arthur",
-# pet_type: :dog,
-# breed: "Husky",
-# price: 900,
-# },
-# ]
