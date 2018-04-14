@@ -214,47 +214,37 @@ end
 # # Opt test a + b solution
 #   def customer_can_afford_pet(customer, new_pet)
 #     return false if customer[:cash] < new_pet[:price]
-#     return true if customer[:cash] > new_pet[:price]
+#     return true if customer[:cash] >= new_pet[:price]
 #   end
+#
+# #### Alt solution ###################
+  def customer_can_afford_pet(customer, new_pet)
+    if customer[:cash] < new_pet[:price]
+      return false
+    else
+      return true
+    end
+  end
 #####################################
 
 
 #####################################
 # # Otp test 2 a
 #####################################
-  #These are 'integration' tests so we want multiple asserts.
-  #If one fails the entire test should fail
+  # These are 'integration' tests so we want multiple asserts.
+  # If one fails the entire test should fail
+  #
   # def test_sell_pet_to_customer__pet_found
   #   customer = @customers[0]
-#     pet = find_pet_by_name(@pet_shop,"Arthur")
-#
-#     sell_pet_to_customer(@pet_shop, pet, customer)
-#
-#     assert_equal(1, customer_pet_count(customer))
-#     assert_equal(1, pets_sold(@pet_shop))
-#     assert_equal(100, customer_cash(customer))
-#     assert_equal(1900, total_cash(@pet_shop))
-#   end
-#
-#
-# # test 8
-#   def find_pet_by_name(shop, name)
-#     for animal in shop[:pets]
-#         return animal if animal[:name] == name
-#     end
-#     return nil
-#   end
-#
-#   def customer_pet_count(customer)
-#     return customer[:pets].length
-#   end
-#
-# def sell_pet_to_customer(shop, pet, customer)
-#
-#   customer[:pets].push(pet)
-#
-#
-# end
+  #   pet = find_pet_by_name(@pet_shop,"Arthur")
+  #
+  #   sell_pet_to_customer(@pet_shop, pet, customer)
+  #
+  #   assert_equal(1, customer_pet_count(customer))
+  #   assert_equal(1, pets_sold(@pet_shop))
+  #   assert_equal(100, customer_cash(customer))
+  #   assert_equal(1900, total_cash(@pet_shop))
+  # end
 
 
 
