@@ -81,39 +81,9 @@ end
 ###################################
 
 
-###################################
-# test 8 a
-######### not my work ############
-def find_pet_by_name(shop, name)
-  i = 0
-  pet = Hash.new
-  for item in shop[:pets]
-         pet = shop[:pets][i] if shop[:pets][i][:name] == name
-    i += 1
-  end
-  return pet
-end
-#####################################
-# # test 8 b
-#####################################
-##### my work but weird #############
-#### using the not my work way ######
-def find_pet_by_name(shop, name)
-  i = 0
-  pet = Hash.new
-  for item in shop[:pets]
-    pet = shop[:pets][i] if shop[:pets][i][:name] == name
-    i += 1
-  end
-  if pet.empty?
-    return nil
-  else
-    return pet
-  end
-end
 #####################################
 # # test 8 a + b
-# ######### my work #################
+# ###################################
 def find_pet_by_name(shop, name)
   for animal in shop[:pets]
       return animal if animal[:name] == name
@@ -126,13 +96,6 @@ end
 ####################################
 # test 9
 ####################################
-def find_pet_by_name(shop, name)
-  for animal in shop[:pets]
-      return animal if animal[:name] == name
-  end
-  return nil
-end
-
 def remove_pet_by_name(shop, name)
   for animal in shop[:pets]
       shop[:pets].delete(animal) if animal[:name] == name
@@ -203,21 +166,13 @@ end
 
 
 #####################################
-# # Opt test 1 a
+# # Opt test 1 a + b
 #####################################
-  # def customer_can_afford_pet(customer, new_pet)
-  #   return false if customer[:cash] < new_pet[:price]
-  # end
-#####################################
-# # Otp test 1 b
-#####################################
-# # Opt test a + b solution
 #   def customer_can_afford_pet(customer, new_pet)
 #     return false if customer[:cash] < new_pet[:price]
 #     return true if customer[:cash] >= new_pet[:price]
 #   end
-#
-# #### Alt solution ###################
+# #### Alt solution #################
   def customer_can_afford_pet(customer, new_pet)
     if customer[:cash] < new_pet[:price]
       return false
@@ -229,34 +184,19 @@ end
 
 
 #####################################
-# # Otp test 2 a + b
+# # Opt test 2 a + b + c
 #####################################
-  def sell_pet_to_customer(shop, pet, customer)
-    if customer_can_afford_pet(customer, pet) == true
-      customer[:pets] << pet
-      shop[:admin][:pets_sold] += 1
-      customer[:cash] -= pet[:price]
-      shop[:admin][:total_cash] += pet[:price]
+  def sell_pet_to_customer(shop, animal, customer)
+    unless animal == nil
+      if customer_can_afford_pet(customer, animal)
+        customer[:pets] << animal
+        # shop[:pets].delete(animal)      # optional and not tested for
+        shop[:admin][:pets_sold] += 1
+        customer[:cash] -= animal[:price]
+        shop[:admin][:total_cash] += animal[:price]
+      end
     end
   end
-#####################################
-
-
-#####################################
-# # Opt test 3
-#####################################
-  # def test_sell_pet_to_customer__insufficient_funds
-  #   customer = @customers[1]
-  #   pet = find_pet_by_name(@pet_shop,"Arthur")
-
-  #   sell_pet_to_customer(@pet_shop, pet, customer)
-
-  #   assert_equal(0, customer_pet_count(customer))
-  #   assert_equal(0, pets_sold(@pet_shop))
-  #   assert_equal(1000, customer_cash(@pet_shop))
-  #   assert_equal(1000, total_cash(@pet_shop))
-  # end
-
 #####################################
 
 
