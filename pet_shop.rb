@@ -1,10 +1,10 @@
-#####################################
+####################################
 # test 1
 ####################################
 def pet_shop_name(shop_name)
   return shop_name[:name]
 end
-#####################################
+####################################
 
 
 ####################################
@@ -21,10 +21,6 @@ end
 ####################################
 def add_or_remove_cash(shop, amount)
   return shop[:admin][:total_cash] += amount
-end
-
-def total_cash(shop)
-  return shop[:admin][:total_cash]
 end
 ####################################
 
@@ -58,19 +54,7 @@ end
 
 ####################################
 # test 7 a + b
-##########not my work##############
-def pets_by_breed(shop, breed)
-i = 0
-  total = []
-  for pet in shop[:pets]
-    total.push(pet) if shop[:pets][i][:breed] == breed
-    i +=1
-  end
-  return total
-end
-###################################
-# test 7 a + b
-####### my work ###################
+####################################
 def pets_by_breed(shop, breed)
   total = Array.new
   for animal in shop[:pets]
@@ -78,12 +62,12 @@ def pets_by_breed(shop, breed)
   end
   return total
 end
-###################################
+####################################
 
 
-#####################################
+####################################
 # # test 8 a + b
-# ###################################
+# ##################################
 def find_pet_by_name(shop, name)
   for animal in shop[:pets]
       return animal if animal[:name] == name
@@ -109,10 +93,6 @@ end
 ####################################
 def add_pet_to_stock(shop, new_pet)
   shop[:pets].push(new_pet)
-end
-
-def stock_count(shop)
-  return shop[:pets].length
 end
 ####################################
 
@@ -147,10 +127,6 @@ end
 #####################################
 # # test 14
 #####################################
-def customer_pet_count(customer)
-  return customer[:pets].length
-end
-
 def add_pet_to_customer(customer, new_pet)
   return customer[:pets].push(new_pet)
 end
@@ -186,20 +162,31 @@ end
 #####################################
 # # Opt test 2 a + b + c
 #####################################
-  def sell_pet_to_customer(shop, animal, customer)
-    unless animal == nil
-      if customer_can_afford_pet(customer, animal)
-        customer[:pets] << animal
-        # shop[:pets].delete(animal)      # optional and not tested for
-        shop[:admin][:pets_sold] += 1
-        customer[:cash] -= animal[:price]
-        shop[:admin][:total_cash] += animal[:price]
-      end
+  # def sell_pet_to_customer(shop, animal, customer)
+  #   unless animal == nil
+  #     if customer_can_afford_pet(customer, animal) == true
+  #       customer[:pets] << animal
+  #       shop[:admin][:pets_sold] += 1
+  #       customer[:cash] -= animal[:price]
+  #       shop[:admin][:total_cash] += animal[:price]
+  #       # shop[:pets].delete(animal)      # optional and not tested for
+  #     end
+  #   end
+  # end
+########alternative solution#########
+####calling the previous functions###
+def sell_pet_to_customer(shop, animal, customer)
+  unless animal == nil
+    if customer_can_afford_pet(customer, animal) == true
+      add_pet_to_customer(customer, animal)
+      increase_pets_sold(shop, 1)
+      remove_customer_cash(customer, animal[:price])
+      add_or_remove_cash(shop, animal[:price])
+      # shop[:pets].delete(animal)      # optional and not tested for
     end
   end
+end
 #####################################
-
-
 
 #####################################
 
